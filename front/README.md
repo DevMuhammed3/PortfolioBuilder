@@ -1,4 +1,4 @@
-# 🌐 Frontend - Full-Stack AI Portfolio Builder
+#  Frontend - Full-Stack AI Portfolio Builder
 
 This is the **frontend** part of the AI Portfolio Builder project, built with **Next.js 15**, **React 19**, **Tailwind CSS**, **shadcn/ui**, and **TypeScript**.
 It follows a **MVC-inspired architecture** with hooks for state management and services for API interactions.

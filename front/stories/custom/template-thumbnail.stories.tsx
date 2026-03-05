@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import TemplateThumbnail from "@/components/custom/template-thumbnail";
-import type { Template } from "@/types"; // Adjust path as needed
+import type { Template } from "@/types";
 
 const meta: Meta<typeof TemplateThumbnail> = {
   title: "Custom/TemplateThumbnail",
@@ -20,9 +20,9 @@ const meta: Meta<typeof TemplateThumbnail> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// ✅ Mock template data
 const mockTemplate: Template = {
   _id: "template-premium-001",
+  slug: "modern-portfolio",
   title: "Modern Portfolio",
   description:
     "a clean and modern portfolio template perfect for developers and designers.",
@@ -39,6 +39,7 @@ const mockTemplate: Template = {
 
 const mockPremiumTemplate: Template = {
   _id: "template-premium-002",
+  slug: "creative-studio",
   title: "Creative Studio",
   description:
     "a bold and creative template for artists and creative professionals.",
@@ -78,6 +79,7 @@ export const InGrid: Story = {
   args: {
     template: {
       _id: "template-business-004",
+      slug: "business-pro",
       title: "Business Pro",
       description:
         "professional template for business consultants and corporate professionals.",
@@ -104,6 +106,7 @@ export const TemplateGallery: Story = {
             Select from our collection of professionally designed templates
           </p>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <TemplateThumbnail template={mockTemplate} />
           <TemplateThumbnail template={mockPremiumTemplate} />
@@ -115,6 +118,7 @@ export const TemplateGallery: Story = {
   args: {
     template: {
       _id: "template-minimalist-005",
+      slug: "minimalist",
       title: "Minimalist",
       description:
         "clean and simple design focusing on content and readability.",

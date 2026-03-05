@@ -21,6 +21,19 @@ const TemplateSchema = new Schema(
       lowercase: true,
     },
 
+    // Slug: unique identifier used for rendering template
+    slug: {
+      type: String,
+      required: [true, "Slug is required"],
+      unique: true,
+      trim: true,
+      lowercase: true,
+      match: [
+        /^[a-z0-9-]+$/,
+        "Slug can only contain lowercase letters, numbers, and hyphens",
+      ],
+    },
+
     // Description: trimmed, required, and max 500 chars
     description: {
       type: String,

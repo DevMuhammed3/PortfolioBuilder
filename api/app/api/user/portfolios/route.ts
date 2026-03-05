@@ -9,7 +9,8 @@ import {
   createPortfolioSchema,
   PortfolioInput,
 } from "@/lib/validations/portfolio";
-import { userRepository } from "@/repositories/UserRepository";
+// import { userRepository } from "@/repositories/UserRepository";
+import { getOrCreateUser } from "@/lib/getOrCreateUser";
 
 /**
  * @swagger
@@ -110,19 +111,17 @@ export async function GET(request: NextRequest) {
     const page = parseInt(searchParams.get("page") || "1", 10);
     const limit = parseInt(searchParams.get("limit") || "10", 10);
     const status = searchParams.get("status");
-    const search = searchParams.get("search");
+    // const search = searchParams.get("search");
     const templateId = searchParams.get("templateId");
 
     // Build filters object
     const filters: FilterQuery<PortfolioDocument> = { page, limit };
     if (status && status !== "all") filters.status = status;
-    if (templateId) filters.templateId = search;
+    // if (templateId) filters.templateId = search;
+    if (templateId) filters.templateId = templateId;
 
-    const user = await userRepository.findByClerkId(userId);
-    if (!user) {
-      // handle not found
-      throw new Error("User not found");
-    }
+    const user = await getOrCreateUser(userId);
+
     const portfolios = await portfolioRepository.findByUserId(
       user._id.toString(),
       filters
@@ -159,12 +158,8 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
 
-    const user = await userRepository.findByClerkId(userId);
+    const user = await getOrCreateUser(userId);
 
-    if (!user) {
-      // handle not found
-      throw new Error("User not found");
-    }
     // Validate input using Zod schema
     const slug = generateSlug(body.name);
     const validatedData = createPortfolioSchema.safeParse({

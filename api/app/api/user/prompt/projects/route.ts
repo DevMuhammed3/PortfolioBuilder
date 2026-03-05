@@ -53,11 +53,10 @@ export async function POST(request: NextRequest) {
     const { userProfile, technologies } = body;
 
     const prompt = `Generate realistic project data for a professional portfolio.
-    ${
-      userProfile
+    ${userProfile
         ? `User context: Name: ${userProfile.name}, Title: ${userProfile.title}, Bio: ${userProfile.bio}`
         : ""
-    }
+      }
     ${technologies ? `Preferred technologies: ${technologies.join(", ")}` : ""}
 
     Generate 3-4 projects that showcase different skills and technologies. Return a JSON array with this exact structure:

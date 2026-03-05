@@ -1,4 +1,5 @@
 import connectDB from "@/lib/database";
+import "@/models/Template";
 import Portfolio from "@/models/Portfolio";
 import { userRepository } from "@/repositories/UserRepository";
 import { auth } from "@clerk/nextjs/server";

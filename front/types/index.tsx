@@ -3,6 +3,7 @@ export type Role = "user" | "admin";
 
 export interface Template {
   _id: string;
+  slug: string;
   title: string;
   description: string;
   tags: string[];

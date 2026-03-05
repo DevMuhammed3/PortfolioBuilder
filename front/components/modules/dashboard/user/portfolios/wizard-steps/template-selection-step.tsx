@@ -44,6 +44,12 @@ export function TemplateSelectionStep({
     onUpdate(template._id);
   };
 
+  const allowedTemplates = ["modern-professional", "minimalist"];
+
+  const visibleTemplates = userTemplates?.filter((t: Template) =>
+    allowedTemplates.includes(t.slug)
+  );
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -67,14 +73,13 @@ export function TemplateSelectionStep({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {!isLoading &&
           userTemplates &&
-          userTemplates.map((template: Template) => (
+          visibleTemplates?.map((template: Template) => (
             <Card
               key={template._id}
-              className={`cursor-pointer transition-all hover:shadow-lg py-0 ${
-                selectedTemplate === template._id
-                  ? "ring-2 ring-primary border-primary"
-                  : "hover:border-primary/50"
-              }`}
+              className={`cursor-pointer transition-all hover:shadow-lg py-0 ${selectedTemplate === template._id
+                ? "ring-2 ring-primary border-primary"
+                : "hover:border-primary/50"
+                }`}
               onClick={() => {
                 if (plan === "free" && template.premium) {
                   showToast.info("This template is for premium users");

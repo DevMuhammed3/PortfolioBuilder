@@ -81,6 +81,16 @@ const UserSchema = new Schema(
       required: false,
       default: "active",
     },
+
+    /**
+ * Tracks how many times the user used AI generation.
+ * Used to enforce usage limits.
+ */
+    aiUsageCount: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
   },
   {
     timestamps: true, // Automatically adds createdAt and updatedAt

@@ -4,7 +4,6 @@ import { portfolioRepository } from "@/repositories/PortfolioRepository";
 import { FilterQuery } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 import { devLog } from "@/lib/utils";
-import { withCORSProtection } from "@/lib/cors"
 
 /**
  * @openapi
@@ -103,48 +102,40 @@ import { withCORSProtection } from "@/lib/cors"
  *                   example: "Failed to fetch public portfolios"
  */
 
-export const GET = (req: NextRequest) =>
-  withCORSProtection(req, async (request) => {
-    try {
-      await connectDB();
+export async function GET(request: NextRequest) {
+  try {
+    // Connect to MongoDB (if not already connected)
+    await connectDB();
 
-      const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(request.url);
 
-      const page = parseInt(searchParams.get("page") || "1", 10);
-      const limit = parseInt(searchParams.get("limit") || "10", 10);
-      const plan = searchParams.get("plan");
+    // Parse filters from query params
+    const page = parseInt(searchParams.get("page") || "1", 10);
+    const limit = parseInt(searchParams.get("limit") || "10", 10);
+    const plan = searchParams.get("plan");
 
-      const filters: FilterQuery<PortfolioDocument> = {
-        page,
-        limit,
-        plan,
-      };
+    // Build filters object
+    const filters: FilterQuery<PortfolioDocument> = { page, limit, plan };
 
-      const portfolios =
-        await portfolioRepository.getPublicPortfolios(filters);
+    const portfolios = await portfolioRepository.getPublicPortfolios(filters);
 
-      return NextResponse.json({
-        success: true,
-        portfolios,
-      });
-    } catch (error) {
-      devLog.error("Error fetching public portfolios:", error);
+    return NextResponse.json({
+      success: true,
+      portfolios,
+    });
+  } catch (error) {
+    devLog.error("Error fetching public portfolios:", error);
 
-      if (error instanceof Error) {
-        return NextResponse.json(
-          { success: false, error: error.message },
-          { status: 400 }
-        );
-      }
-
+    if (error instanceof Error) {
       return NextResponse.json(
-        { success: false, error: "Failed to fetch public portfolios" },
-        { status: 500 }
+        { success: false, error: error.message },
+        { status: 400 }
       );
     }
-  });
 
-export const OPTIONS = (req: NextRequest) =>
-  withCORSProtection(req, async () => {
-    return new NextResponse(null);
-  });
+    return NextResponse.json(
+      { success: false, error: "Failed to fetch public portfolios" },
+      { status: 500 }
+    );
+  }
+}

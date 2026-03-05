@@ -17,10 +17,10 @@ export default async function RootLayout({
   const messages = await getMessages(locale);
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
+    <html className="scroll-smooth" lang={locale} dir={dir} suppressHydrationWarning>
       <head>{/* Le reste de tes balises <meta>, <title>, etc. */}</head>
       <body className={`${fredoka.variable} min-h-screen antialiased`}>
-        {/* ✅ Google Analytics avec next/script */}
+        {/* Google Analytics avec next/script */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MLQZ88C087"
           strategy="afterInteractive"
@@ -49,7 +49,7 @@ export default async function RootLayout({
 
         <Providers locale={locale} messages={messages}>
           {children}
-          {/* ✅ Tawk.to Script */}
+          {/* Tawk.to Script */}
         </Providers>
       </body>
     </html>

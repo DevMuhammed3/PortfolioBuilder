@@ -111,11 +111,11 @@ export function ProjectsStep({
       projects.map((project: Project) =>
         project._id === projectId
           ? {
-              ...project,
-              technologies: project.technologies.filter(
-                (_: string, i: number) => i !== techIndex
-              ),
-            }
+            ...project,
+            technologies: project.technologies.filter(
+              (_: string, i: number) => i !== techIndex
+            ),
+          }
           : project
       )
     );
@@ -346,11 +346,10 @@ export function ProjectsStep({
                     onBlur={(e) =>
                       validateProjectFieldOnBlur("title", e.target.value, index)
                     }
-                    className={`flex-1 ${
-                      validationErrors[`projects.${index}.title`]
+                    className={`flex-1 ${validationErrors[`projects.${index}.title`]
                         ? "border-red-500"
                         : ""
-                    }`}
+                      }`}
                   />
                   {validationErrors[`projects.${index}.title`] && (
                     <p className="text-sm text-red-500">
@@ -375,11 +374,10 @@ export function ProjectsStep({
                         index
                       )
                     }
-                    className={`flex-1 ${
-                      validationErrors[`projects.${index}.description`]
+                    className={`flex-1 ${validationErrors[`projects.${index}.description`]
                         ? "border-red-500"
                         : ""
-                    }`}
+                      }`}
                   />
                   {validationErrors[`projects.${index}.description`] && (
                     <p className="text-sm text-red-500">
@@ -408,11 +406,10 @@ export function ProjectsStep({
                           index
                         )
                       }
-                      className={`flex-1 ${
-                        validationErrors[`projects.${index}.demoUrl`]
+                      className={`flex-1 ${validationErrors[`projects.${index}.demoUrl`]
                           ? "border-red-500"
                           : ""
-                      }`}
+                        }`}
                     />
                     {validationErrors[`projects.${index}.demoUrl`] && (
                       <p className="text-sm text-red-500">
@@ -438,11 +435,10 @@ export function ProjectsStep({
                           index
                         )
                       }
-                      className={`flex-1 ${
-                        validationErrors[`projects.${index}.githubUrl`]
+                      className={`flex-1 ${validationErrors[`projects.${index}.githubUrl`]
                           ? "border-red-500"
                           : ""
-                      }`}
+                        }`}
                     />
                     {validationErrors[`projects.${index}.githubUrl`] && (
                       <p className="text-sm text-red-500">

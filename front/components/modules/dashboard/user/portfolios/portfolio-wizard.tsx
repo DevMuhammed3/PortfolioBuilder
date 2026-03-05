@@ -355,27 +355,24 @@ export function PortfolioWizard({ plan }: { plan: Plan }) {
                 {WIZARD_STEPS.map((step, index) => (
                   <div
                     key={step.id}
-                    className={`flex items-center w-full sm:w-auto ${
-                      index < WIZARD_STEPS.length - 1 ? "flex-1" : ""
-                    }`}
+                    className={`flex items-center w-full sm:w-auto ${index < WIZARD_STEPS.length - 1 ? "flex-1" : ""
+                      }`}
                   >
                     <div
-                      className={`w-8 h-8 min-w-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                        index <= currentStep
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted text-muted-foreground"
-                      }`}
+                      className={`w-8 h-8 min-w-8 rounded-full flex items-center justify-center text-sm font-medium ${index <= currentStep
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
+                        }`}
                     >
                       {index + 1}
                     </div>
 
                     <div className="ml-2 hidden sm:block">
                       <p
-                        className={`text-sm font-medium ${
-                          index <= currentStep
-                            ? "text-foreground"
-                            : "text-muted-foreground"
-                        }`}
+                        className={`text-sm font-medium ${index <= currentStep
+                          ? "text-foreground"
+                          : "text-muted-foreground"
+                          }`}
                       >
                         {step.title}
                       </p>
@@ -383,9 +380,8 @@ export function PortfolioWizard({ plan }: { plan: Plan }) {
 
                     {index < WIZARD_STEPS.length - 1 && (
                       <div
-                        className={`flex-1 h-px mx-4 ${
-                          index < currentStep ? "bg-primary" : "bg-muted"
-                        }`}
+                        className={`flex-1 h-px mx-4 ${index < currentStep ? "bg-primary" : "bg-muted"
+                          }`}
                       />
                     )}
                   </div>

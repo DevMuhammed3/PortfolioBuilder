@@ -5,6 +5,7 @@ import { devLog } from "@/lib/utils";
 export interface Template {
   _id: string;
   title: string;
+  slug: string;
   description: string;
   tags: string[];
   thumbnail: string;

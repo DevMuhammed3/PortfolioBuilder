@@ -37,6 +37,7 @@ export interface PortfolioProfile {
   email: string;
   phone?: string;
   website?: string;
+  avatar?: string;
   profilePhoto?: string;
   socialMedia: SocialMedia[];
 }
@@ -178,9 +179,8 @@ export class PortfoliosService {
       if (filters.limit) params.append("limit", filters.limit.toString());
 
       const queryString = params.toString();
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/user/portfolios${
-        queryString ? `?${queryString}` : ""
-      }`;
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/user/portfolios${queryString ? `?${queryString}` : ""
+        }`;
 
       const response = await apiClient.get(url, { headers });
       if (response.data.success) {
@@ -451,9 +451,8 @@ export class PortfoliosService {
       if (filters.category) params.append("category", filters.category);
 
       const queryString = params.toString();
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/public/portfolio${
-        queryString ? `?${queryString}` : ""
-      }`;
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/public/portfolio${queryString ? `?${queryString}` : ""
+        }`;
 
       const response = await apiClient.get(url, {
         cache: {

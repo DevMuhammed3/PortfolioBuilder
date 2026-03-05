@@ -442,11 +442,10 @@ export function ProfileStep({
                       profile.socialMedia
                     )
                   }
-                  className={`flex-1 ${
-                    validationErrors[`socialMedia.${index}.platform`]
+                  className={`flex-1 ${validationErrors[`socialMedia.${index}.platform`]
                       ? "border-red-500"
                       : ""
-                  }`}
+                    }`}
                 />
 
                 <Input
@@ -463,11 +462,10 @@ export function ProfileStep({
                       profile.socialMedia
                     )
                   }
-                  className={`flex-2 ${
-                    validationErrors[`socialMedia.${index}.url`]
+                  className={`flex-2 ${validationErrors[`socialMedia.${index}.url`]
                       ? "border-red-500"
                       : ""
-                  }`}
+                    }`}
                 />
                 {validationErrors.email && (
                   <p className="text-sm text-red-500">

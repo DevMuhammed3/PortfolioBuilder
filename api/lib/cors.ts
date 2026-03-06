@@ -62,7 +62,9 @@ function getCORSConfig(): CORSConfig {
       "http://127.0.0.1:3001",
       "https://localhost:3000",
       "https://localhost:3001",
-      "https://portfoliobuild.qzz.io"
+      "https://portfoliobuild.qzz.io",
+      "https://www.10minportfolio.site",
+      "https://10minportfolio.site",
     ];
   }
 

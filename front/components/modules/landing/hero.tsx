@@ -127,42 +127,41 @@ function Hero({ usersCount }: HeroProps) {
           >
             <m.h1
               variants={animationVariants}
-              className="text-center text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
+              className="text-center text-4xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight"
               tabIndex={-1}
             >
               {messages.title}{" "}
               <span
-                className="text-primary-500 bg-gradient-to-r px-2 from-primary to-primary/80 bg-clip-text"
+                className="text-transparent bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text drop-shadow-sm px-2 animate-pulse transition-all"
                 aria-label={`${messages.titleHighlight} (highlighted)`}
               >
                 {messages.titleHighlight}
               </span>
-              — {messages.titleDays}
+              <span className="text-muted-foreground/80 font-medium">{messages.titleDays}</span>
             </m.h1>
 
             <m.h6
               variants={animationVariants}
-              className="mt-6 text-center text-muted-foreground max-w-2xl leading-relaxed text-pretty dark:text-gray-400"
+              className="mt-8 text-center text-muted-foreground text-lg sm:text-xl max-w-2xl leading-relaxed text-pretty dark:text-gray-400"
             >
               {messages.subtitle}
             </m.h6>
 
             <m.div
               variants={animationVariants}
-              className="flex items-center justify-center mt-10"
+              className="flex items-center justify-center mt-12 gap-4"
             >
               {!isLoaded ? (
                 <LoadingSpinner size="lg" label="Loading authentication status" />
               ) : isSignedIn ? (
                 <Button
                   size="lg"
-                  className="py-6 px-8 text-xl"
-                  variant="primary"
+                  className="relative py-7 px-10 text-xl font-bold bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden group"
                   asChild
                 >
                   <LocaleLink
                     href="/user"
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 relative z-10"
                     aria-describedby="dashboard-description"
                   >
                     {messages.dashboard}
@@ -172,12 +171,12 @@ function Hero({ usersCount }: HeroProps) {
                 <SignUpButton fallbackRedirectUrl="/user/portfolios/new" mode="modal">
                   <Button
                     size="lg"
-                    className="py-6 px-8 text-xl"
-                    variant="primary"
+                    className="relative py-7 px-10 text-xl font-bold bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden group border-0"
                     onClick={() => announce("Opening sign up form")}
                     aria-describedby="cta-description"
                   >
-                    {messages.cta}
+                    <span className="relative z-10 flex items-center gap-2">{messages.cta}</span>
+                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
                   </Button>
                 </SignUpButton>
               )}

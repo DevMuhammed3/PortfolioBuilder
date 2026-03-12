@@ -57,6 +57,8 @@ export function isValidImageUrl(url: string): boolean {
     const allowedDomains = [
       "images.unsplash.com",
       "plus.unsplash.com",
+      "via.placeholder.com",
+      "placehold.co",
       "cdn.example.com", // Add your CDN domains here
     ];
 

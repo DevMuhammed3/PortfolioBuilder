@@ -36,10 +36,16 @@ export default function Menus() {
       {isOpen && <MobileMenuPanel onClose={() => setIsOpen(false)} />}
 
       {/* Desktop nav */}
-      <div className="hidden md:flex flex-1 items-end justify-center space-x-6">
+      <div className="hidden md:flex flex-1 items-end justify-center space-x-8">
+        <LocaleLink
+          href="/features"
+          className="block text-base font-medium hover:text-primary transition-colors duration-300"
+        >
+          <FormattedMessage id="header.features" defaultMessage="Features" />
+        </LocaleLink>
         <ProtectedLink
           href="/public-portfolios"
-          className="block text-sm font-medium hover:text-primary-500 transitions-colors duration-300"
+          className="block text-base font-medium hover:text-primary transition-colors duration-300"
         >
           <FormattedMessage
             id="header.publicPortfolios"
@@ -48,7 +54,7 @@ export default function Menus() {
         </ProtectedLink>
         <LocaleLink
           href="/pricing"
-          className="block text-md font-medium  hover:text-primary-500 transitions-colors duration-300"
+          className="block text-base font-medium hover:text-primary transition-colors duration-300"
         >
           <FormattedMessage id="header.pricing" defaultMessage="Pricing" />
         </LocaleLink>

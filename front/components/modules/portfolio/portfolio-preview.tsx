@@ -14,6 +14,8 @@ import { Portfolio } from "@/lib/services/portfolios-service";
 import ModernProfessionalTemplate from "@/components/portfolio-templates/modern-professional/ModernProfessionalTemplate";
 import CreativeSplitTemplate from "@/components/portfolio-templates/creative-split/CreativeSplitTemplate";
 import MinimalDevTemplate from "@/components/portfolio-templates/minimal-dev/MinimalDevTemplate";
+import BentoDeveloperTemplate from "@/components/portfolio-templates/bento-developer/BentoDeveloperTemplate";
+import GlassmorphicElegantTemplate from "@/components/portfolio-templates/glassmorphic-elegant/GlassmorphicElegantTemplate";
 
 interface PortfolioPreviewProps {
   portfolio: Portfolio;
@@ -84,6 +86,12 @@ export function PortfolioPreview({
 
       case "minimalist":
         return <MinimalDevTemplate portfolio={portfolio} />;
+
+      case "bento-developer":
+        return <BentoDeveloperTemplate portfolio={portfolio} />;
+
+      case "glassmorphic-elegant":
+        return <GlassmorphicElegantTemplate portfolio={portfolio} />;
 
       default:
         return <ModernProfessionalTemplate portfolio={portfolio} />;

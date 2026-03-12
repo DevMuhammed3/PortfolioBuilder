@@ -129,11 +129,11 @@ export function ProjectsStep({
     if (!file) return;
 
     // Validation: max size 2MB (adjust as needed)
-    const maxSizeInBytes = 2 * 1024 * 1024; // 2MB
-    if (file.size > maxSizeInBytes) {
-      alert("File size exceeds 2MB limit.");
-      return;
-    }
+    // const maxSizeInBytes = 2 * 1024 * 1024; // 2MB
+    // if (file.size > maxSizeInBytes) {
+    //   alert("File size exceeds 2MB limit.");
+    //   return;
+    // }
 
     // Validation: allow only certain image types (jpeg, png, gif)
     const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
@@ -347,8 +347,8 @@ export function ProjectsStep({
                       validateProjectFieldOnBlur("title", e.target.value, index)
                     }
                     className={`flex-1 ${validationErrors[`projects.${index}.title`]
-                        ? "border-red-500"
-                        : ""
+                      ? "border-red-500"
+                      : ""
                       }`}
                   />
                   {validationErrors[`projects.${index}.title`] && (
@@ -375,8 +375,8 @@ export function ProjectsStep({
                       )
                     }
                     className={`flex-1 ${validationErrors[`projects.${index}.description`]
-                        ? "border-red-500"
-                        : ""
+                      ? "border-red-500"
+                      : ""
                       }`}
                   />
                   {validationErrors[`projects.${index}.description`] && (
@@ -407,8 +407,8 @@ export function ProjectsStep({
                         )
                       }
                       className={`flex-1 ${validationErrors[`projects.${index}.demoUrl`]
-                          ? "border-red-500"
-                          : ""
+                        ? "border-red-500"
+                        : ""
                         }`}
                     />
                     {validationErrors[`projects.${index}.demoUrl`] && (
@@ -436,8 +436,8 @@ export function ProjectsStep({
                         )
                       }
                       className={`flex-1 ${validationErrors[`projects.${index}.githubUrl`]
-                          ? "border-red-500"
-                          : ""
+                        ? "border-red-500"
+                        : ""
                         }`}
                     />
                     {validationErrors[`projects.${index}.githubUrl`] && (

@@ -156,7 +156,7 @@ export function ProfileStep({
     fileInputRef.current?.click();
   };
 
-  const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
+  // const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
   const ALLOWED_FORMATS = ["image/png", "image/jpeg", "image/jpg"];
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -169,10 +169,10 @@ export function ProfileStep({
     }
 
     // Check file size
-    if (file.size > MAX_FILE_SIZE) {
-      alert("File size must be less than 2MB.");
-      return;
-    }
+    // if (file.size > MAX_FILE_SIZE) {
+    //   alert("File size must be less than 2MB.");
+    //   return;
+    // }
 
     // If all good, read file as base64
     const reader = new FileReader();
@@ -443,8 +443,8 @@ export function ProfileStep({
                     )
                   }
                   className={`flex-1 ${validationErrors[`socialMedia.${index}.platform`]
-                      ? "border-red-500"
-                      : ""
+                    ? "border-red-500"
+                    : ""
                     }`}
                 />
 
@@ -463,8 +463,8 @@ export function ProfileStep({
                     )
                   }
                   className={`flex-2 ${validationErrors[`socialMedia.${index}.url`]
-                      ? "border-red-500"
-                      : ""
+                    ? "border-red-500"
+                    : ""
                     }`}
                 />
                 {validationErrors.email && (

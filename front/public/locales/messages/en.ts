@@ -7,19 +7,19 @@ export default {
   "header.dashboard": "Dashboard",
 
   // Hero Section
-  "hero.title": "Your portfolio, ready in ",
-  "hero.titleHighlight": "10 minutes",
-  "hero.titleDays": "not days.",
+  "hero.title": "Build a stunning portfolio in ",
+  "hero.titleHighlight": "minutes",
+  "hero.titleDays": ", not weeks.",
   "hero.subtitle":
-    "Stop spending days coding your portfolio when you can build it in just 10 minutes — without writing a single line of code.",
-  "hero.cta": "Create Your Portfolio",
-  "hero.activeUsers": " + {count} users ",
-  "hero.activeUsersText": "users are creating their portfolios right now",
+    "Focus on your craft, not your website. Our AI-driven platform instantly transforms your experience into a breathtaking, recruiter-ready portfolio that opens doors to new opportunities.",
+  "hero.cta": "Start Building for Free",
+  "hero.activeUsers": " + {count} professionals ",
+  "hero.activeUsersText": "are optimizing their career identity today",
 
   // Features Section
-  "features.title": "Everything you need to showcase your work",
+  "features.title": "Everything you need to launch fast",
   "features.subtitle":
-    "Professional portfolio features that help you stand out from the crowd and land your dream job.",
+    "State-of-the-art tools and components engineered to highlight your true value, accelerate your job hunt, and elevate your personal brand.",
   "features.templates.title": "Portfolio Templates",
   "features.analytics.title": "Portfolio Analytics",
   "features.export.title": "Export Options",

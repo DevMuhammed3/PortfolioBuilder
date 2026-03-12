@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Check, Crown, Eye, Lock } from "lucide-react";
+import { Check, Crown, Eye, Lock, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import { Template } from "@/lib/services/templates-services";
 import { useTemplates } from "@/hooks/useTemplates";
 import TemplateThumbnail from "@/components/custom/template-thumbnail";
@@ -38,17 +40,21 @@ export function TemplateSelectionStep({
   onUpdate,
 }: TemplateSelectionStepProps) {
   const [selectedTemplate, setSelectedTemplate] = useState(data || null);
+  const [searchQuery, setSearchQuery] = useState("");
   const { userTemplates, isLoading } = useTemplates();
   const handleTemplateSelect = (template: Template) => {
     setSelectedTemplate(template._id);
     onUpdate(template._id);
   };
 
-  const allowedTemplates = ["modern-professional", "minimalist"];
+  const allowedTemplates = ["modern-professional", "bento-developer", "minimalist",];
 
-  const visibleTemplates = userTemplates?.filter((t: Template) =>
-    allowedTemplates.includes(t.slug)
-  );
+  const visibleTemplates = userTemplates?.filter((t: Template) => {
+    const isAllowed = allowedTemplates.includes(t.slug);
+    const matchesSearch = t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      t.tags?.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    return isAllowed && (searchQuery.trim() === "" || matchesSearch);
+  });
 
   if (isLoading) {
     return (
@@ -67,6 +73,16 @@ export function TemplateSelectionStep({
         <p className="text-muted-foreground">
           Select a template that best represents your style and profession
         </p>
+      </div>
+
+      <div className="relative max-w-md mx-auto mb-8">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <Input
+          placeholder="Search templates by name or tag..."
+          className="pl-10"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </div>
 
       {/* Templates Grid */}

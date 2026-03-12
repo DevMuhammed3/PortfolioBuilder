@@ -1,22 +1,41 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Render a placeholder with the exact same dimensions to prevent layout shift
+    return (
+      <div className="hidden md:block">
+        <button className="border border-border/50 rounded-full p-2 text-transparent">
+          <div className="h-4 w-4" />
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="hidden md:block">
       <button
-        className="border rounded-full p-2 text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-white dark:bg-gray-700"
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        className="border border-border/50 rounded-full p-2 text-muted-foreground hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary focus:outline-none"
+        onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+        aria-label="Toggle theme"
       >
-        {theme === "dark" ? (
-          <Sun className="h-4 w-4 hover:animate-jump hover:animate-once " />
+        {resolvedTheme === "dark" ? (
+          <Sun className="h-4 w-4 hover:scale-110 transition-transform text-orange-400" />
         ) : (
-          <Moon className="h-4 w-4 hover:animate-jump hover:animate-once" />
+          <Moon className="h-4 w-4 hover:scale-110 transition-transform text-indigo-600" />
         )}
       </button>
     </div>

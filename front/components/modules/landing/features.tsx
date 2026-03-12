@@ -27,11 +27,15 @@ export default function Features() {
           variants={animation}
           className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-            Everything you need to launch fast
+          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+            <Sparkles className="w-4 h-4 mr-2" />
+            Features
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+            Everything you need to <span className="text-transparent bg-gradient-to-r from-primary to-purple-500 bg-clip-text">launch fast</span>
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
-            Build, optimize, and publish your portfolio in minutes.
+          <p className="mt-6 text-muted-foreground text-lg md:text-xl leading-relaxed">
+            Build, optimize, and publish your portfolio in minutes, without a single line of code.
           </p>
         </m.div>
 
@@ -72,16 +76,20 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="group relative p-10 rounded-2xl border bg-background/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary group-hover:bg-pink-500/80 group-hover:text-white transition-colors">
-        {icon}
+    <div className="group relative p-10 rounded-3xl border border-primary/10 bg-background/50 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:border-primary/30 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      
+      <div className="relative z-10">
+        <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-purple-600 group-hover:text-white group-hover:shadow-lg transition-all duration-300 group-hover:scale-110">
+          {icon}
+        </div>
+
+        <h3 className="text-xl font-bold mb-4 tracking-tight">{title}</h3>
+
+        <p className="text-muted-foreground leading-relaxed text-pretty">
+          {description}
+        </p>
       </div>
-
-      <h3 className="text-xl font-semibold mb-4">{title}</h3>
-
-      <p className="text-muted-foreground leading-relaxed">
-        {description}
-      </p>
     </div>
   );
 }

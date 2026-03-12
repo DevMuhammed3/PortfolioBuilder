@@ -26,10 +26,13 @@ export default function Problem() {
           variants={animation}
           className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-            Why building a portfolio feels overwhelming
+          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-destructive/10 text-destructive border border-destructive/20">
+            The Problem
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+            Why building a portfolio <span className="text-transparent bg-gradient-to-r from-destructive to-orange-500 bg-clip-text">feels overwhelming</span>
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
+          <p className="mt-6 text-muted-foreground text-lg md:text-xl leading-relaxed">
             Most developers delay their portfolio because it takes too much
             time and effort to get it right.
           </p>
@@ -62,11 +65,15 @@ function ProblemCard({
   description: string;
 }) {
   return (
-    <div className="group p-10 rounded-2xl border bg-background/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <h3 className="text-xl font-semibold mb-4">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed">
-        {description}
-      </p>
+    <div className="group relative p-10 rounded-3xl border border-destructive/10 bg-background/50 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(255,0,0,0.08)] hover:border-destructive/30 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-destructive/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      
+      <div className="relative z-10">
+        <h3 className="text-xl font-bold mb-4 tracking-tight group-hover:text-destructive transition-colors duration-300">{title}</h3>
+        <p className="text-muted-foreground leading-relaxed text-pretty">
+          {description}
+        </p>
+      </div>
     </div>
   );
 }

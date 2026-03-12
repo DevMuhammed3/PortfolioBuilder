@@ -106,6 +106,15 @@ const CTA = dynamic(() => import("@/components/modules/landing/cta"), {
   ),
 });
 
+const FAQ = dynamic(() => import("@/components/modules/landing/faq"), {
+  ssr: true,
+  loading: () => (
+    <div className="flex-1 flex items-center justify-center py-24">
+      <p className="text-muted-foreground">Loading FAQ...</p>
+    </div>
+  ),
+});
+
 // const Story = dynamic(() => import("@/components/modules/landing/story"), {
 //   ssr: false, // client-only component (if it uses browser APIs like YouTube)
 //   loading: () => (
@@ -169,6 +178,7 @@ export default async function LandingPage() {
           <Problem />
           <Features />
           <HowItWorks />
+          <FAQ />
           <CTA />
         </Suspense>
 

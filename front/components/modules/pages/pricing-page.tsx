@@ -59,7 +59,7 @@ const plans = [
 
 export default function PricingPage({ acc }: { acc: Plan }) {
   return (
-    <div className="h-screen py-16">
+    <div className="min-h-screen py-16">
       <Container>
         <BackButton />
         <div className="m-10 text-center">

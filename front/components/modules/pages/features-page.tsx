@@ -165,7 +165,7 @@ const CTASection = memo<CTASectionProps>(({ isSignedIn, role, onNavigate }) => {
           <Button size="lg" variant="outline" asChild>
             <LocaleLink
               href={role === "admin" ? "/admin" : "/user"}
-              className="text-black"
+              className="text-white"
               aria-label={`Go to ${
                 role === "admin" ? "admin" : "user"
               } dashboard`}

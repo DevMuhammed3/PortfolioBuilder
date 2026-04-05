@@ -268,9 +268,9 @@ export function Settings() {
                       size="sm"
                       className="bg-blue-600 hover:bg-blue-700"
                     >
-                      <Link
+                        <Link
                         target="_blank"
-                        href={process.env.NEXT_PUBLIC_PAYPAL_LINK!}
+                        href={process.env.NEXT_PUBLIC_PAYPAL_LINK || "#"}
                       >
                         Upgrade Now
                       </Link>

@@ -75,8 +75,7 @@ function Hero({ usersCount }: HeroProps) {
       }),
       activeUsersText: intl.formatMessage({
         id: "hero.activeUsersText",
-        defaultMessage: "users have created their portfolios",
-      }),
+        defaultMessage: "users have created their portfolios", }),
     }),
     [intl]
   );
@@ -175,7 +174,9 @@ function Hero({ usersCount }: HeroProps) {
                     onClick={() => announce("Opening sign up form")}
                     aria-describedby="cta-description"
                   >
-                    <span className="relative z-10 flex items-center gap-2">{messages.cta}</span>
+<span className="bg-gradient-to-r from-indigo-700 via-purple-500 to-pink-700 bg-clip-text text-transparent">
+  {messages.cta}
+</span>
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
                   </Button>
                 </SignUpButton>

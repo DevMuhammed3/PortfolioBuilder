@@ -29,7 +29,7 @@ function Hero({ usersCount }: HeroProps) {
   // Format the user count with locale support
   const formattedUserCount = useMemo(
     () => new Intl.NumberFormat(intl.locale).format(usersCount),
-    [usersCount, intl.locale]
+    [usersCount, intl.locale],
   );
 
   // Validate avatars before rendering
@@ -42,7 +42,7 @@ function Hero({ usersCount }: HeroProps) {
         }
         return true;
       }),
-    []
+    [],
   );
 
   // Localized strings
@@ -75,9 +75,10 @@ function Hero({ usersCount }: HeroProps) {
       }),
       activeUsersText: intl.formatMessage({
         id: "hero.activeUsersText",
-        defaultMessage: "users have created their portfolios", }),
+        defaultMessage: "users have created their portfolios",
+      }),
     }),
-    [intl]
+    [intl],
   );
 
   // Framer Motion animation variants
@@ -136,7 +137,9 @@ function Hero({ usersCount }: HeroProps) {
               >
                 {messages.titleHighlight}
               </span>
-              <span className="text-muted-foreground/80 font-medium">{messages.titleDays}</span>
+              <span className="text-muted-foreground/80 font-medium">
+                {messages.titleDays}
+              </span>
             </m.h1>
 
             <m.h6
@@ -151,32 +154,62 @@ function Hero({ usersCount }: HeroProps) {
               className="flex items-center justify-center mt-12 gap-4"
             >
               {!isLoaded ? (
-                <LoadingSpinner size="lg" label="Loading authentication status" />
+                <LoadingSpinner
+                  size="lg"
+                  label="Loading authentication status"
+                />
               ) : isSignedIn ? (
                 <Button
                   size="lg"
-                  className="relative py-7 px-10 text-xl font-bold bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden group"
-                  asChild
+                  className="
+  relative py-7 px-10 text-xl font-bold
+  bg-gradient-to-r from-primary to-purple-600
+  hover:from-primary/90 hover:to-purple-600/90
+  shadow-xl shadow-primary/25 hover:shadow-primary/40
+  transition-all duration-300 hover:-translate-y-1
+  overflow-hidden group border-0
+"
                 >
-                  <LocaleLink
-                    href="/user"
-                    className="flex items-center gap-2 relative z-10"
-                    aria-describedby="dashboard-description"
+                  <span
+                    className="
+    relative z-10
+    bg-gradient-to-r from-indigo-700 via-purple-500 to-pink-700
+    bg-clip-text text-transparent
+  "
                   >
                     {messages.dashboard}
-                  </LocaleLink>
+                  </span>
+
+                  <div
+                    className="
+    absolute inset-0
+    -translate-x-full
+    bg-gradient-to-r from-transparent via-white/30 to-transparent
+    group-hover:translate-x-full
+    transition-transform duration-700
+  "
+                  />
                 </Button>
               ) : (
-                <SignUpButton fallbackRedirectUrl="/user/portfolios/new" mode="modal">
+                <SignUpButton
+                  fallbackRedirectUrl="/user/portfolios/new"
+                  mode="modal"
+                >
                   <Button
                     size="lg"
-                    className="relative py-7 px-10 text-xl font-bold bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden group border-0"
+                    className="relative py-7 px-10 text-xl font-bold 
+  bg-gradient-to-r from-primary to-purple-600
+  hover:from-primary/90 hover:to-purple-600/90
+  text-white
+  shadow-xl shadow-primary/25 hover:shadow-primary/40
+  transition-all duration-300 hover:-translate-y-1
+  overflow-hidden group border-0"
                     onClick={() => announce("Opening sign up form")}
                     aria-describedby="cta-description"
                   >
-<span className="bg-gradient-to-r from-indigo-700 via-purple-500 to-pink-700 bg-clip-text text-transparent">
-  {messages.cta}
-</span>
+                    <span className="bg-gradient-to-r from-indigo-700 via-purple-500 to-pink-700 bg-clip-text text-transparent">
+                      {messages.cta}
+                    </span>
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
                   </Button>
                 </SignUpButton>
@@ -215,7 +248,10 @@ function Hero({ usersCount }: HeroProps) {
                           height={48}
                           loading={index < 3 ? "eager" : "lazy"}
                           onError={(e) => {
-                            devLog.warn("[Hero] Failed to load avatar:", user.avatar);
+                            devLog.warn(
+                              "[Hero] Failed to load avatar:",
+                              user.avatar,
+                            );
                             e.currentTarget.style.display = "none";
                           }}
                         />
